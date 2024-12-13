@@ -1,9 +1,10 @@
 import google.generativeai as genai
-import logging
-# from django.conf import settings 
+import logging, os
+from dotenv import load_dotenv
 
-# genai.configure(api_key=settings.GEMINI_KEY)
-genai.configure(api_key='AIzaSyDSLjRXcxx-s9Alh82n41AVYMknGUi2OOg')
+load_dotenv()
+key = os.getenv('GEMINI_KEY')
+genai.configure(api_key=key)
 model = genai.GenerativeModel(model_name="gemini-1.5-flash", 
                               system_instruction='''You are a helpful Travel and Tourism Assistant named Sanskriti and you love India. You are always ready to help people with their travel queries and provide them with the best possible solutions.
                                                     Please keep in mind to respond in language of the user's query and provide them with the most relevant and concise information, refer the provided document and include the information about places only if asked, else keep it empty.
